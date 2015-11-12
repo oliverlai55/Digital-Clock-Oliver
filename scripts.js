@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	var red;
 	function displayTime(){
 		var currentTime = new Date();
 		var hours = currentTime.getHours();
@@ -8,11 +9,14 @@ $(document).ready(function(){
 
 		if(seconds < 10){
 			seconds = "0" + seconds;
-			if (seconds == ("0" + 0)){
-				// $('div').css("color", "red")
-				setInterval(($('div').css("color", "red")), 500)
+			if(red == "on"){
+				$('div').css("color", "black");
+			}else if ((seconds == ("0" + 0)) && (red == 'off')){
+				$('div').css("color", "red");
+				red = "on";
 			}else{
 				$('div').css("color", "black")
+				red = "off";
 
 			}
 		};
@@ -21,8 +25,8 @@ $(document).ready(function(){
 		if(minutes < 10){
 			minutes = "0" + minutes;
 			if(minutes ===("0" + 0)){
-				// $('div').css("color", "blue")
-				setInterval(($('div').css("color", "blue")), 10000)
+				$('div').css("color", "blue")
+				// setInterval(($('div').css("color", "blue")), 10000)
 			}else{
 				$('div').css("color", "black")
 //how do i make it so that css color goes back to red when seconds is 00
@@ -43,10 +47,15 @@ $(document).ready(function(){
 	}
 
 	displayTime();
-	setInterval(displayTime, 1000);
+	setInterval(displayTime, 100);
 
 	
-// 	$('.button').click(function(){
+	$('button').click(function(){
+		var theTime = $('#clock').html();
+		$('#fake-clock').html(theTime);
+		$('#clock').toggle();
+		$('#fake-clock').toggle();
+	});
 // var theTrick = $(this).attr('todo');
 
 // }if(theTrick == "toggle"){

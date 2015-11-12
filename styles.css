@@ -1,8 +1,11 @@
-#clock{
+#clock, #fake-clock{
     text-align: center;
     font-size: 86px;
     font-family: arial;
     margin-top: 28%;
+}
+#fake-clock{
+	display: none;
 }
 
 .regColor{
